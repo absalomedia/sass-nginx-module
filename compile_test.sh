@@ -66,8 +66,8 @@ if [ "${1}" != "--nocompile" ]; then
       --add-module="${moduledir}" \
       --with-cc-opt="-I${sass_include}" \
       --with-ld-opt="-L${moduledir}/lib/libsass/lib"
-  make || exit $?
-  make install || exit $?
+  sudo make || exit $?
+  sudo make install || exit $?
 fi
 
 export PATH="$PATH:${moduledir}/vendor/nginx-${VER_NGINX}/objs"
