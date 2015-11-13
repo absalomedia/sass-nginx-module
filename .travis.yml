@@ -30,6 +30,7 @@ before_install:
 before_script:
  - chmod +x compile_test.sh
 
+install: cpanm -v --notest Test::Nginx
 script:  ./compile_test.sh
 
 notifications:

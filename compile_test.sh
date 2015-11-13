@@ -67,13 +67,10 @@ if [ "${1}" != "--nocompile" ]; then
       --with-cc-opt="-I${sass_include}" \
       --with-ld-opt="-L${moduledir}/lib/libsass/lib"
   sudo make || exit $?
-  sudo make install || exit $?
 fi
 
 export PATH="$PATH:${moduledir}/vendor/nginx-${VER_NGINX}/objs"
 
 echo "==> Testing!"
-
-cpanm -v --notest Test::Nginx
 
 cd "${moduledir}" && prove
