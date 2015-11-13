@@ -74,4 +74,6 @@ export PATH="$PATH:${moduledir}/vendor/nginx-${VER_NGINX}/objs"
 
 echo "==> Testing!"
 
+cpanm -v --notest Test::Nginx
+
 cd "${moduledir}" && prove
