@@ -1,6 +1,6 @@
 language: perl
 perl:     5.20
-sudo:     false
+sudo: true
 
 addons:
   apt:
