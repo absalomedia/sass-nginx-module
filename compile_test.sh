@@ -46,7 +46,7 @@ if [ "${1}" != "--nocompile" ]; then
   make shared
    echo "==> Moving Libsass library"
   cd "lib"
-  cp libsass.so /usr/lib/libsass.so
+  sudo cp libsass.so /usr/lib/libsass.so
 
   echo "==> Building Nginx"
 
