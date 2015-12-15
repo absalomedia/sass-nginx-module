@@ -26,7 +26,7 @@ __DATA__
         body_filter_by_lua 'ngx.arg[1] = string.sub(ngx.arg[1], 1, -2) .. "\\n"';
     }
 --- request
-    GET /conf_output-style.scss
+    GET /conf_output.scss
 --- response_body
 .output {
   background-color: white; }
@@ -40,12 +40,12 @@ __DATA__
         root  $TEST_NGINX_FIXTURE_DIR;
 
         sass_compile       on;
-        sass_output compact;
+        sass_output        compact;
 
         body_filter_by_lua 'ngx.arg[1] = string.sub(ngx.arg[1], 1, -2) .. "\\n"';
     }
 --- request
-    GET /conf_output-style.scss
+    GET /conf_output.scss
 --- response_body
 .output { background-color: white; }
 
@@ -63,7 +63,7 @@ __DATA__
         body_filter_by_lua 'ngx.arg[1] = string.sub(ngx.arg[1], 1, -2) .. "\\n"';
     }
 --- request
-    GET /conf_output-style.scss
+    GET /conf_output.scss
 --- response_body
 .output{background-color:#fff}.output .with-style{color:#000}
 
@@ -79,7 +79,7 @@ __DATA__
         body_filter_by_lua 'ngx.arg[1] = string.sub(ngx.arg[1], 1, -2) .. "\\n"';
     }
 --- request
-    GET /conf_output-style.scss
+    GET /conf_output.scss
 --- response_body
 .output {
   background-color: white;
@@ -101,7 +101,7 @@ __DATA__
         body_filter_by_lua 'ngx.arg[1] = string.sub(ngx.arg[1], 1, -2) .. "\\n"';
     }
 --- request
-    GET /conf_output-style.scss
+    GET /conf_output.scss
 --- response_body
 .output {
   background-color: white; }

@@ -26,7 +26,7 @@ __DATA__
         body_filter_by_lua 'ngx.arg[1] = string.sub(ngx.arg[1], 1, -2) .. "\\n"';
     }
 --- request
-    GET /conf_source-comments.scss
+    GET /conf_comments.scss
 --- response_body
 html {
   background-color: black; }
@@ -46,7 +46,7 @@ body {
         body_filter_by_lua 'ngx.arg[1] = string.sub(ngx.arg[1], 1, -2) .. "\\n"';
     }
 --- request
-    GET /conf_source-comments.scss
+    GET /conf_comments.scss
 --- response_body
 html {
   background-color: black; }
