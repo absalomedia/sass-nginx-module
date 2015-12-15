@@ -16,7 +16,7 @@ run_tests();
 
 __DATA__
 
-=== TEST 1: default comments
+=== TEST 1: default source type
 --- config
     location ~ ^.*\.scss$ {
         root  $TEST_NGINX_FIXTURE_DIR;
@@ -41,7 +41,7 @@ body {
         root  $TEST_NGINX_FIXTURE_DIR;
 
         sass_compile          on;
-        sass_comments         off;
+        sass_source_type      off;
 
         body_filter_by_lua 'ngx.arg[1] = string.sub(ngx.arg[1], 1, -2) .. "\\n"';
     }
@@ -61,8 +61,27 @@ body {
         root  $TEST_NGINX_FIXTURE_DIR;
 
         sass_compile          on;
-        sass_comments         on;
+        sass_source_type      on;
     }
 --- request
-    GET /conf_source-comments.scss
---- response_body_like: /* line 1,
+    GET /conf_source-type.sass
+--- response_body
+@mixin texto($font, $size, $color)
+    font-family: $font
+    font-size: $size
+    color: $color
+    margin: 0
+
+@mixin shadow($x, $y, $blur, $color)
+    text-shadow: $x $y $blur $color
+    filter: Shadow(Color=$color, Direction=130, Strength=1)
+
+@mixin filterS($x, $y, $blur, $color)
+    -moz-box-shadow: $x $y $blur $color
+    -webkit-box-shadow: $x $y $blur $color
+    box-shadow: $x $y $blur $color
+
+@mixin img($url, $w, $h)
+    background:  url($url) 0 0 no-repeat
+    width: $w
+    height: $h

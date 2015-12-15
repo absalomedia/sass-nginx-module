@@ -40,7 +40,7 @@ __DATA__
         root  $TEST_NGINX_FIXTURE_DIR;
 
         sass_compile       on;
-        sass_output_style  compact;
+        sass_output compact;
 
         body_filter_by_lua 'ngx.arg[1] = string.sub(ngx.arg[1], 1, -2) .. "\\n"';
     }
@@ -58,7 +58,7 @@ __DATA__
         root  $TEST_NGINX_FIXTURE_DIR;
 
         sass_compile       on;
-        sass_output_style  compressed;
+        sass_output  compressed;
 
         body_filter_by_lua 'ngx.arg[1] = string.sub(ngx.arg[1], 1, -2) .. "\\n"';
     }
@@ -74,7 +74,7 @@ __DATA__
         root  $TEST_NGINX_FIXTURE_DIR;
 
         sass_compile       on;
-        sass_output_style  expanded;
+        sass_output  expanded;
 
         body_filter_by_lua 'ngx.arg[1] = string.sub(ngx.arg[1], 1, -2) .. "\\n"';
     }
@@ -96,7 +96,7 @@ __DATA__
         root  $TEST_NGINX_FIXTURE_DIR;
 
         sass_compile       on;
-        sass_output_style  nested;
+        sass_output  nested;
 
         body_filter_by_lua 'ngx.arg[1] = string.sub(ngx.arg[1], 1, -2) .. "\\n"';
     }

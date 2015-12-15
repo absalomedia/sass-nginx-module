@@ -39,7 +39,7 @@ body {
         root  $TEST_NGINX_FIXTURE_DIR;
 
         sass_compile           on;
-        sass_source_map_embed  on;
+        sass_map_embed         on;
     }
 --- request
     GET /default.scss
