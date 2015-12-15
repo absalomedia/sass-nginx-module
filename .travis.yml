@@ -16,12 +16,12 @@ env:
   global:
     - LUAJIT_LIB=/usr/lib/x86_64-linux-gnu/
     - LUAJIT_INC=/usr/include/luajit-2.0/
-    - VER_LUA_NGINX=0.9.16
+    - VER_LUA_NGINX=0.9.19
     - VER_NGX_DEVEL=0.2.19
   matrix:
     - VER_NGINX=1.6.3
     - VER_NGINX=1.8.0
-    - VER_NGINX=1.9.5
+    - VER_NGINX=1.9.9
 
 before_install:
   - git submodule init
