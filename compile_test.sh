@@ -3,6 +3,13 @@
 cd "${0%/*}"
 
 moduledir=`pwd`
+nocompile=0
+
+if [ "${1}" == "--nocompile" ]; then
+  nocompile=1
+
+  shift
+fi
 
 
 echo "==> Checking parameters"
@@ -71,4 +78,4 @@ export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${moduledir}/lib/libsass/lib"
 
 echo "==> Testing!"
 
-cd "${moduledir}" && prove
+cd "${moduledir}" && prove $@
