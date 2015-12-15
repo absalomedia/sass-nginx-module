@@ -44,9 +44,6 @@ if [ "${1}" != "--nocompile" ]; then
 
   cd "${moduledir}/lib/libsass"
   make shared
-   echo "==> Moving Libsass library"
-  cd "lib"
-  sudo cp libsass.so /usr/lib/libsass.so
 
   echo "==> Building Nginx"
 
@@ -70,6 +67,7 @@ if [ "${1}" != "--nocompile" ]; then
 fi
 
 export PATH="$PATH:${moduledir}/vendor/nginx-${VER_NGINX}/objs"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${moduledir}/lib/libsass/lib"
 
 echo "==> Testing!"
 
