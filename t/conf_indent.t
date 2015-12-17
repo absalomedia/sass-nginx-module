@@ -16,65 +16,40 @@ run_tests();
 
 __DATA__
 
-=== TEST 1: default source type
+=== TEST 1: default indent
 --- config
-    location ~ ^.*\.scss$ {
+    location /default.scss {
         root  $TEST_NGINX_FIXTURE_DIR;
 
         sass_compile  on;
 
         body_filter_by_lua_block {
             ngx.arg[1] = string.sub(ngx.arg[1], 1, -2) .. "\n"
-        };
+        }
     }
 --- request
-    GET /conf_comments.scss
+    GET /default.scss
 --- response_body
-html {
-  background-color: black; }
-
 body {
-  color: white; }
+  background-color: white;
+  color: black; }
 
 
-=== TEST 2: source type "off"
+=== TEST 2: custom indent
 --- config
-    location ~ ^.*\.scss$ {
+    location /default.scss {
         root  $TEST_NGINX_FIXTURE_DIR;
 
-        sass_compile          on;
-        sass_source_type      off;
+        sass_compile  on;
+        sass_indent   "    ";
 
         body_filter_by_lua_block {
             ngx.arg[1] = string.sub(ngx.arg[1], 1, -2) .. "\n"
         }
     }
 --- request
-    GET /conf_comments.scss
---- response_body
-html {
-  background-color: black; }
-
-body {
-  color: white; }
-
-
-=== TEST 3: source type "on"
---- config
-    location ~ ^.*\.sass$ {
-        root  $TEST_NGINX_FIXTURE_DIR;
-
-        sass_compile          on;
-        sass_source_type      on;
-
-        body_filter_by_lua_block {
-            ngx.arg[1] = string.sub(ngx.arg[1], 1, -2) .. "\n"
-        }
-    }
---- request
-    GET /conf_source-type.sass
+    GET /default.scss
 --- response_body
 body {
-  background: red
-   border: 1px solid green }
-
+    background-color: white;
+    color: black; }
