@@ -6,6 +6,8 @@ nginx module, including precision, source maps, indenting and detection of SASS/
 Stop thinking about "sass watch" shell processes or the integration features of
 your IDE while still using the power of Sass while developing your websites.
 
+[![Build Status](https://travis-ci.org/absalomedia/sass-nginx-module.svg?branch=master)](https://travis-ci.org/absalomedia/sass-nginx-module)
+
 ### Note
 
 This module is experimental and only been used in development environments.
