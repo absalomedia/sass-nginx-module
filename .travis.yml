@@ -1,6 +1,6 @@
 language: perl
 perl:     5.20
-sudo: false
+sudo: true
 
 addons:
   apt:
@@ -26,6 +26,7 @@ env:
 before_install:
   - git submodule init
   - git submodule update
+  - chmod +x compile_test.sh
 
 install: cpanm -v --notest Test::Nginx
 script:  ./compile_test.sh
