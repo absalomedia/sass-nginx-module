@@ -27,6 +27,9 @@ before_install:
   - git submodule init
   - git submodule update
   - chmod +x compile_test.sh
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
+  - echo $CC 
+  - echo $CXX
 
 install: cpanm -v --notest Test::Nginx
 script:  ./compile_test.sh
