@@ -1,7 +1,7 @@
 # Syntactically Awesome Nginx Module
 
 Providing on-the-fly compiling of [Sass](http://sass-lang.com/) files as an
-nginx module, soon hopefully with source maps.
+nginx module, including precision, source maps, indenting and detection of SASS/SCSS files.
 
 Stop thinking about "sass watch" shell processes or the integration features of
 your IDE while still using the power of Sass while developing your websites.
@@ -65,10 +65,20 @@ make install
 
 ## Configuration
 
-The configuration is pretty straightforward.
+The configuration is pretty straightforward:
 
-Add a new location-block to your local server block similar to the (pretty
-minimal) configuration example you can find in the [etc directory](etc/vhost.conf).
+```nginx
+server {
+    location ~ ^.*\.css$ {
+        sass_compile  on;
+
+        rewrite  ^(.*)\.css$  $1.scss  break;
+    }
+}
+```
+
+Add this location block to your server activates the sass compilation.
+
 Using a rewrite ensures all the magic happens under the hood and you do not
 have to change your application to load different files.
 
@@ -78,16 +88,38 @@ Error Log Level:
 
 ```nginx
 location / {
-    # same as regular nginx error log
+    # same as regular NGINX error log
     sass_error_log  error;  #default
 }
 ```
 
-Include Paths:
+Include Path:
 
 ```nginx
 location / {
-    sass_include_path  "/some/dir';
+    # windows (semicolon as path sep)
+    sass_include_path  "/some/dir;/another/dir";
+
+    # everywhere else (colon as path sep)
+    sass_include_path  "/some/dir:/another/dir";
+}
+```
+
+Indentation:
+
+```nginx
+location / {
+    sass_indent  "  ";   # default
+    sass_indent  "    ";
+}
+```
+
+Linefeed:
+
+```nginx
+location / {
+    sass_linefeed  "\n";                 # default
+    sass_linefeed  "\n/* linefeed */\n";
 }
 ```
 

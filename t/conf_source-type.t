@@ -23,7 +23,9 @@ __DATA__
 
         sass_compile  on;
 
-        body_filter_by_lua 'ngx.arg[1] = string.sub(ngx.arg[1], 1, -2) .. "\\n"';
+        body_filter_by_lua_block {
+            ngx.arg[1] = string.sub(ngx.arg[1], 1, -2) .. "\n"
+        };
     }
 --- request
     GET /conf_comments.scss
@@ -35,7 +37,7 @@ body {
   color: white; }
 
 
-=== TEST 2: comments "off"
+=== TEST 2: source type "off"
 --- config
     location ~ ^.*\.scss$ {
         root  $TEST_NGINX_FIXTURE_DIR;
@@ -43,7 +45,9 @@ body {
         sass_compile          on;
         sass_source_type      off;
 
-        body_filter_by_lua 'ngx.arg[1] = string.sub(ngx.arg[1], 1, -2) .. "\\n"';
+        body_filter_by_lua_block {
+            ngx.arg[1] = string.sub(ngx.arg[1], 1, -2) .. "\n"
+        }
     }
 --- request
     GET /conf_comments.scss
@@ -55,33 +59,22 @@ body {
   color: white; }
 
 
-=== TEST 3: comments "on"
+=== TEST 3: source type "on"
 --- config
-    location ~ ^.*\.scss$ {
+    location ~ ^.*\.sass$ {
         root  $TEST_NGINX_FIXTURE_DIR;
 
         sass_compile          on;
         sass_source_type      on;
+
+        body_filter_by_lua_block {
+            ngx.arg[1] = string.sub(ngx.arg[1], 1, -2) .. "\n"
+        }
     }
 --- request
     GET /conf_source-type.sass
 --- response_body
-@mixin texto($font, $size, $color)
-    font-family: $font
-    font-size: $size
-    color: $color
-    margin: 0
+body {
+  background: red;
+   border: 1px solid green; }
 
-@mixin shadow($x, $y, $blur, $color)
-    text-shadow: $x $y $blur $color
-    filter: Shadow(Color=$color, Direction=130, Strength=1)
-
-@mixin filterS($x, $y, $blur, $color)
-    -moz-box-shadow: $x $y $blur $color
-    -webkit-box-shadow: $x $y $blur $color
-    box-shadow: $x $y $blur $color
-
-@mixin img($url, $w, $h)
-    background:  url($url) 0 0 no-repeat
-    width: $w
-    height: $h
