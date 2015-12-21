@@ -16,7 +16,7 @@ run_tests();
 
 __DATA__
 
-=== TEST 1: default source map embed
+=== TEST 1: default source type
 --- config
     location /default.scss {
         root  $TEST_NGINX_FIXTURE_DIR;
@@ -35,18 +35,21 @@ body {
   color: black; }
 
 
-=== TEST 2: source map embed "on"
+=== TEST 2: source type on "on"
 --- config
-    location /default.scss {
+    location /conf_source_type.sass {
         root  $TEST_NGINX_FIXTURE_DIR;
 
         sass_compile           on;
-        sass_map_embed         on;
+        sass_map_url           on;
 
          body_filter_by_lua_block {
             ngx.arg[1] = string.sub(ngx.arg[1], 1, -2) .. "\n"
         }
     }
 --- request
-    GET /default.scss
---- response_body_like: sourceMappingURL=data:application/json;base64
+    GET /conf_source_type.sass
+--- response_body
+body {
+  background: red;
+  border: 1px solid green; }

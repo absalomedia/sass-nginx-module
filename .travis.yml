@@ -12,6 +12,9 @@ addons:
       - libluajit-5.1-dev
       - libluajit-5.1.2
 
+compiler:
+  - gcc-4.8
+
 env:
   global:
     - LUAJIT_LIB=/usr/lib/x86_64-linux-gnu/
@@ -27,7 +30,6 @@ before_install:
   - git submodule init
   - git submodule update
   - chmod +x compile_test.sh
-  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
   - echo $CC 
   - echo $CXX
 

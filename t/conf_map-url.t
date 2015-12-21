@@ -16,7 +16,7 @@ run_tests();
 
 __DATA__
 
-=== TEST 1: default source map embed
+=== TEST 1: default source map url
 --- config
     location /default.scss {
         root  $TEST_NGINX_FIXTURE_DIR;
@@ -35,13 +35,13 @@ body {
   color: black; }
 
 
-=== TEST 2: source map embed "on"
+=== TEST 2: source map url "on"
 --- config
     location /default.scss {
         root  $TEST_NGINX_FIXTURE_DIR;
 
         sass_compile           on;
-        sass_map_embed         on;
+        sass_map_url           on;
 
          body_filter_by_lua_block {
             ngx.arg[1] = string.sub(ngx.arg[1], 1, -2) .. "\n"
