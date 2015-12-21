@@ -41,7 +41,7 @@ body {
         root  $TEST_NGINX_FIXTURE_DIR;
 
         sass_compile           on;
-        sass_map_url           on;
+        sass_source_type       on;
 
          body_filter_by_lua_block {
             ngx.arg[1] = string.sub(ngx.arg[1], 1, -2) .. "\n"
