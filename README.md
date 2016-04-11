@@ -6,7 +6,7 @@ nginx module, including precision, source maps, indenting and detection of SASS/
 Stop thinking about "sass watch" shell processes or the integration features of
 your IDE while still using the power of Sass while developing your websites.
 
-![Libsass 3.3.3](https://img.shields.io/badge/libsass-3.3.3-yellow.svg) [![Build Status](https://travis-ci.org/absalomedia/sass-nginx-module.svg?branch=master)](https://travis-ci.org/absalomedia/sass-nginx-module)
+![Libsass 3.3.4](https://img.shields.io/badge/libsass-3.3.4-yellow.svg) [![Build Status](https://travis-ci.org/absalomedia/sass-nginx-module.svg?branch=master)](https://travis-ci.org/absalomedia/sass-nginx-module)
 
 ### Note
 
@@ -58,7 +58,6 @@ To be able to run the unit tests you need additional modules configured:
 ```shell
 cd /path/to/nginx/src
 ./configure \
-  --add-module=/projects/public/ngx_devel_kit \
   --add-module=/projects/public/lua-nginx-module \
   --add-module=/projects/private/sass-nginx-module
 make install

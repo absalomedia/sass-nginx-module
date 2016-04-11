@@ -14,7 +14,6 @@ fi
 
 echo "==> Checking parameters"
 
-[ -z "${VER_LUA_NGINX}" ] && echo 'parameter VER_LUA_NGINX missing' && exit 1
 [ -z "${VER_NGX_DEVEL}" ] && echo 'parameter VER_NGX_DEVEL missing' && exit 1
 [ -z "${VER_NGINX}" ]     && echo 'parameter VER_NGINX missing'     && exit 1
 
@@ -41,12 +40,6 @@ if [ "${1}" != "--nocompile" ]; then
       && tar -xf lua-nginx-module.tar.gz
   fi
 
-  if [ ! -d "ngx_devel_kit-${VER_NGX_DEVEL}" ]; then
-    wget "https://github.com/simpl/ngx_devel_kit/archive/v${VER_NGX_DEVEL}.tar.gz" -O ngx_devel_kit.tar.gz \
-      && tar -xf ngx_devel_kit.tar.gz
-  fi
-
-
   echo "==> Compiling Libsass"
 
   cd "${moduledir}/lib/libsass"
@@ -65,7 +58,6 @@ if [ "${1}" != "--nocompile" ]; then
   fi
 
   ./configure \
-      --add-module="${moduledir}/vendor/ngx_devel_kit-${VER_NGX_DEVEL}" \
       --add-module="${moduledir}/vendor/lua-nginx-module-${VER_LUA_NGINX}" \
       --add-module="${moduledir}" \
       --with-cc-opt="-I${sass_include}" \
