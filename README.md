@@ -6,7 +6,7 @@ nginx module, including precision, source maps, indenting and detection of SASS/
 Stop thinking about "sass watch" shell processes or the integration features of
 your IDE while still using the power of Sass while developing your websites.
 
-![Libsass 3.5.2](https://img.shields.io/badge/libsass-3.5.2-yellow.svg) [![Build Status](https://travis-ci.org/absalomedia/sass-nginx-module.svg?branch=master)](https://travis-ci.org/absalomedia/sass-nginx-module)
+![Libsass 3.5.5](https://img.shields.io/badge/libsass-3.5.5-yellow.svg) [![Build Status](https://travis-ci.org/absalomedia/sass-nginx-module.svg?branch=master)](https://travis-ci.org/absalomedia/sass-nginx-module)
 
 ### Note
 
@@ -16,7 +16,6 @@ You can, and should, expect some weird bugs from serving unparsed files up to
 completely deactivating your vhost.
 
 Use with caution!
-
 
 ## Compilation
 
@@ -62,7 +61,6 @@ cd /path/to/nginx/src
   --add-module=/projects/private/sass-nginx-module
 make install
 ```
-
 
 ## Configuration
 
@@ -161,6 +159,7 @@ location / {
     sass_precision:     10;
 }
 ```
+
 To do really simple source maps, just add:
 
 Source map file:
@@ -170,6 +169,7 @@ location / {
     sass_map_file:    "sass_output.map";
 }
 ```
+
 If it's not included in Nginx, it won't render out a source map for you.
 
 Fine grained control of source map functionality is also covered by Nginx.
@@ -182,6 +182,7 @@ location / {
     sass_map_embed  on;
 }
 ```
+
 Omit source map urls:
 
 ```nginx
@@ -190,6 +191,7 @@ location / {
     sass_map_url  on;
 }
 ```
+
 Source map root:
 
 ```nginx
@@ -197,4 +199,3 @@ location / {
     sass_map_root:    "/some/directory";
 }
 ```
-
